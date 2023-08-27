@@ -27,11 +27,14 @@ export default function TextForm(props) {
   };
 
   const countWords = () => {
-    if (text.length === 0) {
-      return 0;
-    } else {
-      return (text.match(new RegExp("\\s", "g")) || []).length + 1;
-    }
+    console.log(
+      text.split(" ").filter((element) => {
+        return element.length !== 0;
+      }).length
+    );
+    return text.split(" ").filter((element) => {
+      return element.length !== 0;
+    }).length;
   };
   const [text, setText] = useState("Enter text here...");
 
@@ -64,7 +67,7 @@ export default function TextForm(props) {
         <button
           className={`btn btn-${
             props.mode === "dark" ? "outline-primary" : "primary"
-          } mx-2`}
+          } mx-2 my-1`}
           onClick={handleUpClick}
         >
           Convert to Uppercase
@@ -72,7 +75,7 @@ export default function TextForm(props) {
         <button
           className={`btn btn-${
             props.mode === "dark" ? "outline-warning" : "warning"
-          } mx-2`}
+          } mx-2 my-1`}
           onClick={handleLowClick}
         >
           Convert to Lowercase
@@ -80,7 +83,7 @@ export default function TextForm(props) {
         <button
           className={`btn btn-${
             props.mode === "dark" ? "outline-danger" : "danger"
-          } mx-2`}
+          } mx-2 my-1`}
           onClick={handleClearText}
         >
           Clear Text!!
@@ -88,7 +91,7 @@ export default function TextForm(props) {
         <button
           className={`btn btn-${
             props.mode === "dark" ? "outline-info" : "info"
-          } mx-2`}
+          } mx-2 my-1`}
           onClick={copyText}
         >
           Copy Text
